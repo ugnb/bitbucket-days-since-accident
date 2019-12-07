@@ -1,0 +1,100 @@
+@import "../../node_modules/flipclock/src/scss/flipclock";
+
+body {
+  min-height: 100vh;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #253858;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+
+  .spacer {
+    flex: 1 1;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .twitter-stream {
+    display: flex;
+    flex-grow: 1;
+    height: calc(100vh - 60px);
+    overflow: auto;
+    width: 30%;
+  }
+
+  .status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+
+    .days-since, .days-record, .bitbucket-logo, #current-incident {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 30px;
+      width: 100%;
+
+      .text {
+        display: flex;
+        flex-direction: row;
+        font-size: 3em;
+        padding-right: 30px;
+      }
+    }
+
+    .bitbucket-logo {
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 50px;
+
+      img {
+        height: 2em;
+      }
+    }
+
+    .days-since {
+      #days-since-counter {
+
+      }
+    }
+
+    .days-record {
+      #days-record-counter {
+
+      }
+    }
+
+    #current-incident {
+      background-image: url('../images/scream.svg');
+      background-repeat: no-repeat;
+      background-position: left;
+      background-position-y: 20px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-bottom: -30px;
+
+
+      #current-incident-text {
+        font-size: 2em;
+        color: #ff570c;
+        vertical-align: bottom;
+        padding-left: 200px;
+      }
+    }
+  }
+
+}
+
