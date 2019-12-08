@@ -1,7 +1,8 @@
 @import "../../node_modules/flipclock/src/scss/flipclock";
 
+
 body {
-  min-height: 100vh;
+  min-height: calc(var(--vh) * 100);
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
   color: #253858;
@@ -10,7 +11,7 @@ body {
 }
 
 .container {
-  min-height: calc(100vh - 60px);
+  min-height: calc((var(--vh) * 100) - 60px);
   display: flex;
   flex-direction: row;
   padding: 30px;
@@ -26,7 +27,7 @@ body {
   .twitter-stream {
     display: flex;
     flex-grow: 1;
-    height: calc(100vh - 60px);
+    height: calc((var(--vh)* 100) - 60px);
     overflow: auto;
     width: 30%;
   }
@@ -59,7 +60,7 @@ body {
       margin-bottom: 50px;
 
       img {
-        height: 2em;
+        height: 5vw;
       }
     }
 
@@ -92,9 +93,97 @@ body {
         color: #ff570c;
         vertical-align: bottom;
         padding-left: 200px;
+        margin-bottom: 20px;
       }
     }
   }
 
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    height: calc((var(--vh) * 100) - 20px);
+    flex-direction: column-reverse;
+
+    .twitter-stream {
+      height: auto;
+      flex: 1;
+    }
+
+    .twitter-stream, .status {
+      width: 100%;
+    }
+
+    .status {
+      margin-bottom: 30px;
+      position: relative;
+
+      .bitbucket-logo img {
+        height: 8vw;
+      }
+
+      .days-since, .days-record {
+        .text {
+          font-size: 6vw;
+        }
+
+        .flip-clock {
+          font-size: 2vw;
+        }
+      }
+
+      #current-incident {
+        background-position-y: bottom;
+        background-size: 25vw 25vw;
+        position: absolute;
+        bottom: 0;
+
+        #current-incident-text {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .status {
+      .days-since, .days-record {
+        .text {
+          font-size: 4.5vw;
+        }
+
+        .flip-clock {
+          font-size: 1.5vw;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .status {
+      margin-bottom: 15px;
+
+      .bitbucket-logo {
+        margin-bottom: 20px;
+      }
+
+      .days-since, .days-record {
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        .text {
+          padding: 0;
+          margin-bottom: 15px;
+          font-size: 7vw;
+        }
+
+        .flip-clock {
+          font-size: 3vw;
+        }
+      }
+
+      #current-incident {
+        display: none;
+      }
+    }
+  }
 }
 

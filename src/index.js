@@ -3,6 +3,12 @@ import moment from 'moment';
 import FlipClock from 'flipclock';
 import './styles/style.scss'
 
+const appHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+};
+window.addEventListener('resize', appHeight);
+appHeight();
 
 function getUnresolvedIncidents() {
     return new Promise(
@@ -91,7 +97,6 @@ function setRecordCounter(incidents, recordCounter) {
 function refreshAll(recordCounter, sinceCounter) {
     getIncidents()
         .then((incidents) => {
-            console.log(incidents);
             setSinceCounter(incidents, sinceCounter);
             setRecordCounter(incidents, recordCounter);
         });
@@ -102,7 +107,6 @@ function refreshAll(recordCounter, sinceCounter) {
             $('#current-incident-text').html('');
             return;
         }
-        console.log(unresolved);
         $('#current-incident').removeClass('hidden');
         $('#current-incident-text').html(`Oh no! ${unresolved[0].name}`)
     });
